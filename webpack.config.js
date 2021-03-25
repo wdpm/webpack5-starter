@@ -1,7 +1,7 @@
 const path = require("path");
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+// const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 console.debug({mode})
@@ -10,6 +10,7 @@ module.exports = {
     mode: mode,
     // index.js:11 line in chrome dev console
     devtool: "source-map",// has source map?
+    entry: "./src/index.ts",
     output: {
         path: path.resolve(__dirname, 'dist'),
         assetModuleFilename: "images/[hash][ext]" //dist/images/XXX.jpg
@@ -42,16 +43,24 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loader: "ts-loader"
             }
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new MiniCSSExtractPlugin(),
         new HtmlWebpackPlugin({
             template: "./src/index.html"
         })
     ],
+    resolve: {
+        extensions: ['.ts', '.js']
+    },
     devServer: {
         // localhost:8080/dist/
         contentBase: './dist/',

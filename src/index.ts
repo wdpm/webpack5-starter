@@ -8,4 +8,8 @@ const anotherObj = {
     ...obj,
     c: true
 }
-console.log('only reload js not html content.')
+
+import foo from './foo'
+console.log(foo)
+
+console.log('index.ts.')
