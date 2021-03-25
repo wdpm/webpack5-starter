@@ -16,3 +16,10 @@ main {
   flex-direction: column;
   align-items: center;
 }
+
+.hero {
+  height: 300px;
+  background-image: url("../images/054.jpg");
+  background-position: center;
+  background-size: cover;
+}

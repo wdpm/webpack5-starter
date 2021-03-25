@@ -21,3 +21,9 @@
     - "postcss-loader": "^5.2.0"
     - "postcss-preset-env": "^6.7.0"
 - use .browserslistrc to control postcss patch level. e.g. IE 11
+- use webpack5 `type:asset` to load image files
+  > in webpack4 you may need file-loader or url-loader.
+    - config webpack5 option `output.assetModuleFilename` for images folder
+    - config webpack5 option `parser.dataUrlCondition.maxSize` for inline base64 images
+- use clean-webpack-plugin to remove dist folder when `yarn run build`
+  > alternative: use rimraf to replace `rm -rf` command to remove dist folder.
